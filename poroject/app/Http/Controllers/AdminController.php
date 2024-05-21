@@ -13,9 +13,9 @@ class AdminController extends Controller
 
     public function upload(Request $request){
         $doctor = new doctor;
-        $image = $request->file;
+        $image = $request->image;
         $imagename = time(). '.' . $image->getClientOriginalExtension();
-        $request->file->move('doctorimage',$imagename);
+        $request->image->move('doctorimage',$imagename);
 
         $doctor->image = $imagename;
         $doctor->name = $request->name;
