@@ -99,11 +99,10 @@
                 @endauth
 
             @endif
-        <div class="collapse navbar-collapse" id="navbarSupport">
-
+        {{-- <div class="collapse navbar-collapse" id="navbarSupport"> --}}
         </ul>
         </div> <!-- .navbar-collapse -->
-      </div> <!-- .container -->
+
     </nav>
   </header>
 
