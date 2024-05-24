@@ -118,13 +118,15 @@
             <th style="padding: 10px; color:white; font-size:20px;">Date</th>
             <th style="padding: 10px; color:white; font-size:20px;">Message</th>
             <th style="padding: 10px; color:white; font-size:20px;">Status</th>
+            <th style="padding: 10px; color:white; font-size:20px;">Cancle Appointment</th>
         </tr>
         @foreach ($appoint as $appoints)
-            <tr>
-                <td style="padding: 10px;">{{$appoints->doctor}}</td>
-                <td style="padding: 10px;">{{$appoints->date}}</td>
-                <td style="padding: 10px;">{{$appoints->message}}</td>
-                <td style="padding: 10px;">{{$appoints->status}}</td>
+            <tr style="background-color: black; padding-botton:10px;" align="center">
+                <td style="padding: 10px; color:white">{{$appoints->doctor}}</td>
+                <td style="padding: 10px; color:white">{{$appoints->date}}</td>
+                <td style="padding: 10px; color:white">{{$appoints->message}}</td>
+                <td style="padding: 10px; color:white">{{$appoints->status}}</td>
+                <td><a class=" btn btn-danger btn-sm" onclick="return confirm('Are you sure cancel this Appointment')" href="{{url('cancel_appoint',$appoints->id)}}">Cancel</a></td>
             </tr>
 
         @endforeach
