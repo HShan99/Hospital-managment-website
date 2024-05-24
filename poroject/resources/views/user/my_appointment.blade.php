@@ -112,21 +112,23 @@
   </header>
   <div align="center" style="padding:70px;">
     <table>
-        {{-- @foreach ($appointment as $appointments)
 
-        @endforeach --}}
         <tr  style="background-color: black;">
             <th style="padding: 10px; color:white; font-size:20px;">Doctor Name</th>
             <th style="padding: 10px; color:white; font-size:20px;">Date</th>
             <th style="padding: 10px; color:white; font-size:20px;">Message</th>
             <th style="padding: 10px; color:white; font-size:20px;">Status</th>
         </tr>
-        <tr>
-            {{-- <td>{{$appointments->doctor}}</td>
-            <td>{{$appointments->date}}</td>
-            <td>{{$appointments->message}}</td>
-            <td>{{$appointments->status}}</td> --}}
-        </tr>
+        @foreach ($appoint as $appoints)
+            <tr>
+                <td style="padding: 10px;">{{$appoints->doctor}}</td>
+                <td style="padding: 10px;">{{$appoints->date}}</td>
+                <td style="padding: 10px;">{{$appoints->message}}</td>
+                <td style="padding: 10px;">{{$appoints->status}}</td>
+            </tr>
+
+        @endforeach
+
     </table>
   </div>
 
