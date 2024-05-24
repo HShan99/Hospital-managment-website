@@ -89,7 +89,17 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'Appointment booked successfully!');
     }
 
+    public function my_appointment(){
+        if(Auth::id()){
+            $userid = Auth::user()->id;
+            $appoint = appointment::where('user_id',$userid)->get();
+            return view('user.my_appointment',compact('appoint'));
+        }
+        else{
+            return redirect()->back();
+        }
 
+    }
 
 
 }
