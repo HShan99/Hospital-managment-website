@@ -2,7 +2,8 @@
     <div class="container">
       <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
 
-      <form class="main-form" action="{{url('appointmrnt')}}" method="POST">
+      <form class="main-form" action="{{url('/appointment')}}" method="POST">
+        @csrf
         <div class="mt-5 row ">
           <div class="py-2 col-12 col-sm-6 wow fadeInLeft">
             <input type="text" name="name" class="form-control" placeholder="Full name">
