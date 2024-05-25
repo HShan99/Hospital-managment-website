@@ -35,6 +35,9 @@ class AdminController extends Controller
 
     public function approved($id){
         $data = Appointment::find($id);
-        $data.status = Approved
+        $data->status = 'Approved';
+        $data->save();
+        return redirect()->back();
+
     }
 }
