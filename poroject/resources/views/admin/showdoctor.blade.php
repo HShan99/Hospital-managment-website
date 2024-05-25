@@ -25,19 +25,25 @@
                         <th style=" padding: 10px; color:white;">Specialty</th>
                         <th style=" padding: 10px; color:white;">Room No</th>
                         <th style=" padding: 10px; color:white;">Image</th>
+                        <th style=" padding: 10px; color:white;">Update</th>
+                        <th style=" padding: 10px; color:white;">Delete</th>
                     </tr>
 
-                    @foreach ($data as $doctors)
+                  @foreach ($data as $doctors)
                     <tr style="background-color:rgb(14, 16, 17); padding-botton:10px;" align="center">
                         <td style="padding: 10px; font-size:10px; color:white">{{$doctors->name}}</td>
                         <td style="padding: 10px; font-size:10px; color:white">{{$doctors->phone}}</td>
-                        <td style="padding: 10px; font-size:10px; color:white">{{$doctors->spacialty}}</td>
-                        <td style="padding: 10px; font-size:10px; color:white">{{$doctors->phone}}</td>
+                        <td style="padding: 10px; font-size:10px; color:white">{{$doctors->specialty}}</td>
+                        <td style="padding: 10px; font-size:10px; color:white">{{$doctors->room}}</td>
+                        <td style="padding: 10px; font-size:10px; color:white"><img src="doctorimage/{{$doctors->image}}" width="75px" height="75px" ></td>
+                        <td><a  href="{{url('/updatedoctor',$doctors->id)}}" class="btn btn-primary">Update</a></td>
+                        <td><a onclick="return confirm('Are you sure to Delete this')" href="{{url('/deletedoctor',$doctors->id)}}" class="btn btn-danger">Delete</a></td>
                     </tr>
-                    @endforeach
+                  @endforeach
                 </table>
 
-
+            </div>
+        </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('admin.script')

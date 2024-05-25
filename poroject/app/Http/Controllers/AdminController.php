@@ -28,6 +28,7 @@ class AdminController extends Controller
         return redirect()->back()->with('message','Doctor Add Successfully');
     }
 
+
     public function showappointment(){
         $data = Appointment::all();
         return view('admin.showappointment',compact('data'));
@@ -51,6 +52,12 @@ class AdminController extends Controller
 
     public function showdoctors(){
         $data = Doctor::all();
-        return view('admin.showdoctor',compact($data));
+        return view('admin.showdoctor',compact('data'));
+    }
+
+    public function deletedoctor($id){
+        $data = Doctor::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }

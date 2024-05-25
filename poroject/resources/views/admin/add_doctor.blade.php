@@ -56,10 +56,10 @@
                         <label>Speciality</label>
                         <select name="specialty" style="color: black; width:200px" required>
                             <option>--Select--</option>
-                            <option value="Skin" name="specialty">Skin</option>
-                            <option value="Hart" name="specialty">Hart</option>
-                            <option value="Head" name="specialty">Head</option>
-                            <option value="Eye" name="specialty">Eye</option>
+                            <option value="Skin">Skin</option>
+                            <option value="Hart">Hart</option>
+                            <option value="Head">Head</option>
+                            <option value="Eye">Eye</option>
                         </select>
                     </div>
 
