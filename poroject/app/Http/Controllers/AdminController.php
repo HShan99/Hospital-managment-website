@@ -32,4 +32,9 @@ class AdminController extends Controller
         $data = Appointment::all();
         return view('admin.showappointment',compact('data'));
     }
+
+    public function approved($id){
+        $data = Appointment::find($id);
+        $data.status = Approved
+    }
 }
