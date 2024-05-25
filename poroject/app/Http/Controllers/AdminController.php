@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Doctor;
+use BaconQrCode\Renderer\Path\Move;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -59,5 +60,28 @@ class AdminController extends Controller
         $data = Doctor::find($id);
         $data->delete();
         return redirect()->back();
+    }
+
+    public function updatedoctor($id){
+        $data = Doctor::find($id);
+        return view('admin.updatedoctor',compact('data'));
+    }
+
+    public function editdoctor(Request $request,$id ){
+        $doctor = Doctor::find($id);
+        $doctor->name = $request->name;
+        $doctor->phone = $request->phone;
+        $doctor->specialty = $request->specialty;
+        $doctor->room = $request->room;
+
+        $image = $request->file;
+        if($image){
+        $imagename = time(). '.' . $image->getClientOriginalExtension;
+
+        $request->file->Move('doctorimage',$imagename);
+        $doctor->image = $imagename;
+    }
+        $doctor->save();
+        return redirect()->back()->with('message','Updated Successfully');
     }
 }
