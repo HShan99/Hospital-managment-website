@@ -60,3 +60,7 @@ Route::post('/editdoctor/{id}',[AdminController::class,'editdoctor']);
 Route::get('/email_view/{id}',[AdminController::class,'email_view']);
 
 Route::post('/send_email/{id}',[AdminController::class,'send_email']);
+
+Route::get('/aboutus',[HomeController::class,'aboutus']);
+
+Route::get('/contactus',[HomeController::class,'contactus']);

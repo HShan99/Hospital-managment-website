@@ -114,5 +114,11 @@ class HomeController extends Controller
 
     }
 
+    public function aboutus(){
+        return view('user.aboutus');
+    }
 
+    public function contactus(){
+        return view('user.contactus');
+    }
 }
