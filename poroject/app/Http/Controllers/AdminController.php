@@ -8,12 +8,23 @@ use App\Notifications\SendEmailNotification;
 use BaconQrCode\Renderer\Path\Move;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Events\NotificationSent;
-// use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function addview(){
-        return view('admin.add_doctor');
+        if(Auth::id()){
+            if(Auth::user()->userType == 1){
+                return view('admin.add_doctor');
+            }
+            else{
+                return redirect()->back();
+            }
+        }
+        else{
+            return redirect('login');
+        }
+
     }
 
     public function upload(Request $request){
@@ -34,8 +45,19 @@ class AdminController extends Controller
 
 
     public function showappointment(){
-        $data = Appointment::all();
-        return view('admin.showappointment',compact('data'));
+        if(Auth::id()){
+            if(Auth::user()->userType == 1){
+                $data = Appointment::all();
+                return view('admin.showappointment',compact('data'));
+            }
+            else{
+                return redirect()->back();
+            }
+        }
+        else{
+            return redirect('login');
+        }
+
     }
 
     public function approved($id){
@@ -102,7 +124,8 @@ class AdminController extends Controller
             'body' => $request->body,
             'actiontext' => $request->actiontext,
             'actionurl' => $request->actionurl,
-            'endpart' => $request->endpart
+
+           'endpart' => $request->endpart
 
         ];
 
