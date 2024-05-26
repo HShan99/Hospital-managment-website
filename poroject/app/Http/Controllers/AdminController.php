@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Notifications\SendEmailNotification;
 use BaconQrCode\Renderer\Path\Move;
 use Illuminate\Http\Request;
-
+use Illuminate\Notifications\Events\NotificationSent;
+// use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Notification;
 class AdminController extends Controller
 {
     public function addview(){
@@ -83,5 +86,30 @@ class AdminController extends Controller
     }
         $doctor->save();
         return redirect()->back()->with('message','Updated Successfully');
+    }
+
+    public function email_view($id){
+        $data = Appointment::find($id);
+
+        return view('admin.email_view',compact('data'));
+    }
+
+    public function send_email(Request $request,$id){
+        $data = Appointment::find($id);
+
+        $details = [
+            'greeting' => $request->greeting,
+            'body' => $request->body,
+            'actiontext' => $request->actiontext,
+            'actionurl' => $request->actionurl,
+            'endpart' => $request->endpart
+
+        ];
+
+        Notification::send($data,new SendEmailNotification($details));
+
+        return redirect()->back()->with('message','Email send Successfully');
+
+
     }
 }

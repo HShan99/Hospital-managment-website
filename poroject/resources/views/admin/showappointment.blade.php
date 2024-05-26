@@ -19,15 +19,16 @@
         <div align="center" style="padding-top: 100px;">
             <table>
                 <tr  style="background-color: black;">
-                    <th style=" padding: 10px; color:white;">Customer Name</th>
+                    <th style=" padding: 10px; color:white; width: 100px;">Customer Name</th>
                     <th style=" padding: 10px; color:white;">Email</th>
                     <th style=" padding: 10px; color:white;">Phone</th>
-                    <th style=" padding: 10px; color:white;">Doctor Name</th>
-                    <th style=" padding: 10px; color:white;">Date</th>
+                    <th style=" padding: 10px; color:white; width: 200px;">Doctor Name</th>
+                    <th style=" padding: 10px; color:white; ">Date</th>
                     <th style=" padding: 10px; color:white;">Message</th>
                     <th style=" padding: 10px; color:white;">Status</th>
                     <th style=" padding: 10px; color:white;">Approve</th>
                     <th style=" padding: 10px; color:white;">Cancel</th>
+                    <th style=" padding: 10px; color:white;">Send Mail</th>
                 </tr>
                 @foreach ($data as $appoints)
                 <tr style="background-color:rgb(14, 16, 17); padding-botton:10px;" align="center">
@@ -40,6 +41,7 @@
                     <td style="padding: 10px; font-size:10px; color:white">{{$appoints->status}}</td>
                     <td><a class="btn btn-success btn-sm" href="{{url('/approved',$appoints->id)}}">Approved</a></td>
                     <td><a class="btn btn-danger btn-sm" href="{{url('/canceled',$appoints->id)}}">Canceled</a></td></td>
+                    <td><a style="width: 100px;" class="btn btn-primary btn-sm" href="{{url('/email_view',$appoints->id)}}">Send Email</a></td></td>
                 </tr>
                 @endforeach
 
