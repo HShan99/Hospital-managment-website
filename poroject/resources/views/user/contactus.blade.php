@@ -111,6 +111,7 @@
   </header>
   <div>
     <h2>Contact Us</h2>
+    <img src="assets/img/bg_image_1.jpg" alt="image" style="width: 100%; height: 900px;">
   </div>
 
 @include('user.footer')
